@@ -18,7 +18,9 @@
             @error('name')
                 {{$message}}
             @enderror
-        </label><br>  
+        </label><br> 
+        
+       
 
         <label>Course:</label>   
         <select name="course">  
@@ -48,7 +50,10 @@
             @error('email')
                 {{$message}}
             @enderror
-        </label> <br>  
+        </label> <br> 
+        <label>Password</label>         
+        <input type="password" name="password" /> <br>
+        <br> 
 
         <input type="submit" value="Submit"/> 
     </form>  

@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('form', function (Blueprint $table) {
-            $table->id();
-            $table->string('name')->nullable();
-            $table->string('course')->nullable();
-            $table->string('gender')->nullable();
-            $table->string('email')->nullable();
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('gender');
+            $table->string('course');
         });
     }
 
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('form');
+        //
     }
 };

@@ -27,7 +27,12 @@ Route::get('/crud', [FormController::class, 'showall']);
 Route::get('/delete/{id}',[FormController::class,'delete']);
 Route::get('/update_view/{id}',[FormController::class,'update_view']);
 Route::post('/update/{id}',[FormController::class,'update']);
-
+Route::get('/login',[FormController::class,'login_page']);
+Route::post('/login',[FormController::class,'login']);
+Route::get('/dashboard',[FormController::class,'dashboard']);
+Route::get('/userdelete/{id}',[FormController::class,'userdelete']);
+Route::get('/useredit/{id}',[FormController::class,'useredit']);
+Route::post('/edit/{id}',[FormController::class,'edit']);
 
 
 
