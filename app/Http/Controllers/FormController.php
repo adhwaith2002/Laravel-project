@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\product;
 use Illuminate\Http\Request;
 use App\Models\User;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+
+
 
 class FormController extends Controller
 {
   public function index()
   {
+   
     return view('form');
   }
+ 
  
   public function register(Request $request)
   {
@@ -36,6 +42,29 @@ class FormController extends Controller
 
    
     return redirect('/form');
+  }
+  public function product(Request $request)
+  {
+    $item = new product();
+    $item->product=$request->input('product');
+    $item->features=$request->input('feature');
+    if($request->hasFile('image')){
+      $image = $request->file('image');
+      $extension = $image->getClientOriginalExtension();
+      $imagename = time() . '.' .$extension;
+      $image->move('product',$imagename);
+      $item->image = $imagename;
+    }
+    else
+    {
+      return $request;
+      $item ->image = '';
+    }
+    
+    
+    $item->save();
+    return view('admindashboard');
+
   }
 
   public function showall()
@@ -70,6 +99,11 @@ class FormController extends Controller
     
     return view('login');
   }
+  public function adminlogin_page(Request $request)
+  {
+    
+    return view('adminlogin');
+  }
   public function login(Request $request)
   { 
     $form = User::where('email','=',$request->email)->first();
@@ -81,9 +115,29 @@ class FormController extends Controller
         return '<h1>Invalid credentials</h1>';
     
   }
+  public function adminlogin(Request $request)
+  { 
+    $email = $request->input('email');
+    $password = $request->input('password');
+    if($email=="admin@gmail.com" && $password == "admin@123")
+    {
+      return view('/admindashboard');
+    }else{
+      return '<h1>Invalid credentials</h1>';
+    }
+     
+    
+  }
+  
   public function dashboard()
+  { 
+    $forms = product::all();
+    return view('dashboard',compact('forms'));
+  }
+  public function admindashboard()
   {
-    return view('dashboard');
+    
+    return view('admindashboard');
   }
   
   public function userdelete($id)

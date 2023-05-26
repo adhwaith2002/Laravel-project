@@ -3,30 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
 </head>
 <body>
-    <h1 align="center">Welcome to Dashboard</h1>
-    <table align="center" border="10%">
+    <h1 align="center">Welcome to  User Dashboard</h1>
+    <table border="10%">
   <tr>
-    <th>Name</th>
-    <th>Course</th>
-    <th>Gender</th>
-    <th>Email</th>
-    <th>Delete</th>
-    <th>Edit</th>
+    <th>Product</th>
+    <th>feature</th>
+    <th>Image</th>
   </tr>
+  @foreach($forms as $form)
   <tr>
-    <td>{{$form->name}}</td>
-    <td>{{$form->course}}</td>
-    <td>{{$form->gender}}</td>
-    <td>{{$form->email}}</td>
-    <td><a href="{{url('userdelete',$form->id)}}">Delete</a></td>
-    <td><a href="{{url('useredit',$form->id)}}">Edit</a></td>
+    <td>{{$form->product}}</td>
+    <td>{{$form->features}}</td>
   </tr>
-
+  @endforeach
 </table>
+
 <br>
 <br>
 <h1 align="center"><a  href="/login">Logout</a></h1>

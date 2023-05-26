@@ -21,7 +21,6 @@ Route::get('/', function () {
 });
 
 Route::get('/form',[FormController::class,'index']);
-
 Route::post('/form', [FormController::class, 'register']);
 Route::get('/crud', [FormController::class, 'showall']);
 Route::get('/delete/{id}',[FormController::class,'delete']);
@@ -30,10 +29,13 @@ Route::post('/update/{id}',[FormController::class,'update']);
 Route::get('/login',[FormController::class,'login_page']);
 Route::post('/login',[FormController::class,'login']);
 Route::get('/dashboard',[FormController::class,'dashboard']);
+Route::get('/admindashboard',[FormController::class,'admindashboard']);
+Route::post('/admindashboard',[FormController::class,'product']);
 Route::get('/userdelete/{id}',[FormController::class,'userdelete']);
 Route::get('/useredit/{id}',[FormController::class,'useredit']);
 Route::post('/edit/{id}',[FormController::class,'edit']);
-
+Route::get('/adminlogin',[FormController::class,'adminlogin_page']);
+Route::post('/adminlogin',[FormController::class,'adminlogin']);
 
 
 
